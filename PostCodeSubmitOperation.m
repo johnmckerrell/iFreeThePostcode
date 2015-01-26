@@ -22,9 +22,11 @@
  */
 - (id)initWithURL:(NSURL*)url;
 {
-    if (![super init]) return nil;
-    submitURL = url;
-    [submitURL retain];
+    self = [super init];
+    if (self) {
+        submitURL = url;
+        [submitURL retain];
+    }
     return self;
 }
  
@@ -40,7 +42,7 @@
     /**
      * Retrieve the contents of the URL.
      */
-    NSString *webpageString = [[[NSString alloc] initWithContentsOfURL:submitURL] autorelease];
+    NSString *webpageString = [[[NSString alloc] initWithContentsOfURL:submitURL encoding:NSUTF8StringEncoding error:nil] autorelease];
  
     /**
      * Retrieve a reference to the app and pass the content in.

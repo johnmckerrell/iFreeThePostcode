@@ -13,7 +13,7 @@
 #import "PostCodeSubmitOperation.h"
 #import "RootViewController.h"
 
-@interface MainViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate> {
+@interface MainViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate,UIAlertViewDelegate> {
     IBOutlet UILabel *latitude, *longitude, *accuracy, *lastUpdated, *lockStatusDescription;
     IBOutlet UITextField *pcFirst, *pcSecond, *emailAddress, *activeField;
     IBOutlet UITextView *accuracyMessage;

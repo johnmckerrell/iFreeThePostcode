@@ -23,7 +23,8 @@
  */
 
 - (void)viewDidLoad {
-	
+    [super viewDidLoad];
+    
 	MainViewController *viewController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
 	self.mainViewController = viewController;
 	[viewController release];

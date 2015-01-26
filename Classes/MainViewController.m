@@ -42,6 +42,7 @@
  * we can initialise elements of the view.
  */
 - (void)viewDidLoad {
+    [super viewDidLoad];
     /**
      * Retrieve any user defaults that have been saved.
      */
@@ -90,7 +91,7 @@
  * is changed and allows us to change the text of the label.
  */
 - (IBAction)locationLockStatusChange:(id)sender {
-    NSLog( @"here - %d", lockStatus.selectedSegmentIndex );
+    NSLog( @"here - %d", (int)lockStatus.selectedSegmentIndex );
     switch ([lockStatus selectedSegmentIndex]) {
         case 0:
             lockStatusDescription.text = @"All location updates accepted";
@@ -107,7 +108,7 @@
      * and set the value for this field.
      */
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:[NSString stringWithFormat:@"%d", lockStatus.selectedSegmentIndex] forKey: @"lockStatus" ];
+    [userDefaults setObject:[NSString stringWithFormat:@"%d", (int)lockStatus.selectedSegmentIndex] forKey: @"lockStatus" ];
 
 
 }
@@ -200,7 +201,7 @@
  * then we pass focus to the next field.
  */
 - (IBAction)textFieldDoneEditing:(id)sender {
-    NSLog( @"returnKeyType=%i UIReturnKeyNext=%i UIReturnKeyDone=%i", [sender returnKeyType], UIReturnKeyNext, UIReturnKeyDone );
+    NSLog( @"returnKeyType=%i UIReturnKeyNext=%i UIReturnKeyDone=%i", (int)[sender returnKeyType], (int)UIReturnKeyNext, (int)UIReturnKeyDone );
     if( [sender returnKeyType] == UIReturnKeyNext ) {
         if( sender == pcFirst ) {
             [pcSecond becomeFirstResponder];
@@ -293,16 +294,6 @@
 }
  
  
-/**
- * The user has clicked on a person, we will let them continue
- * on into the person's details so that they can then select
- * an address property that we can take the postcode from.
- */
-- (BOOL)peoplePickerNavigationController:
-            (ABPeoplePickerNavigationController *)peoplePicker
-      shouldContinueAfterSelectingPerson:(ABRecordRef)person {
-    return YES;
-}
 
 /**
  * The user has clicked on a value within the person record.
@@ -312,11 +303,8 @@
  * is one then we parse it, set the postcode fields and hide
  * the address book picker.
  */
-- (BOOL)peoplePickerNavigationController:
-            (ABPeoplePickerNavigationController *)peoplePicker
-      shouldContinueAfterSelectingPerson:(ABRecordRef)person
-                                property:(ABPropertyID)property
-                              identifier:(ABMultiValueIdentifier)identifier{
+- (void)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker didSelectPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
     if( identifier != -1 ) {
         ABPropertyType type = ABPersonGetTypeOfProperty(property);
         if( type == 261 ) {
@@ -329,7 +317,7 @@
                 NSString *firstHalf = [postcode substringToIndex:([postcode length]-3)];
                 NSString *secondHalf = [postcode substringFromIndex:([postcode length]-3)];
                 NSUInteger index = [firstHalf length];
-                while( index >= 0 ) {
+                while( index > 0 ) {
                     if( [firstHalf characterAtIndex:index-1] != ' ' ) {
                         break;
                     }
@@ -341,12 +329,26 @@
                     [self setPostcodeFirstPart:firstHalf secondPart:secondHalf];
                     [self dismissModalViewControllerAnimated:YES];
                     iFreeThePostcodeAppDelegate *appDelegate = (iFreeThePostcodeAppDelegate*)[[UIApplication sharedApplication] delegate];
-                    [appDelegate.rootViewController infoButtonHidden:YES];
+                    [appDelegate.rootViewController infoButtonHidden:NO];
                 }
             }
             [((NSDictionary*)address) release];
         }
     }
+}
+
+/**
+ * The user has clicked on a person, we will let them continue
+ * on into the person's details so that they can then select
+ * an address property that we can take the postcode from.
+ */
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+    return YES;
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
     return NO;
 }
 
@@ -360,7 +362,7 @@
         [[[[UIAlertView alloc] 
           initWithTitle:@"Success!" 
           message:@"You should get an email to confirm shortly." 
-          delegate:self 
+          delegate:self
           cancelButtonTitle:@"Close" 
           otherButtonTitles:nil] 
           autorelease]
@@ -411,7 +413,6 @@
  * Makes sure we release UIAlertView objects when we're done with them
  */
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [alertView autorelease];
 }
 
 /**

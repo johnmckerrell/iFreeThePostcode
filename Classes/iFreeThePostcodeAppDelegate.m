@@ -117,9 +117,10 @@
  */
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
-	[window addSubview:[rootViewController view]];
+    window.rootViewController = rootViewController;
 	[window makeKeyAndVisible];
     locationManager = [[CLLocationManager alloc] init];
+    [locationManager requestWhenInUseAuthorization];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
