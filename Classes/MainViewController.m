@@ -31,7 +31,7 @@
          * Set up the operations queue, we will use
          * this to submit the postcode in another thread.
          */
-        queue = [[[NSOperationQueue alloc] init] retain];
+        queue = [[NSOperationQueue alloc] init];
 	}
     
 	return self;
@@ -78,11 +78,11 @@
     //[testBtn setHidden:NO];
     
 
-    timer = [[NSTimer scheduledTimerWithTimeInterval:20
+    timer = [NSTimer scheduledTimerWithTimeInterval:20
                                              target:self
                                            selector:@selector(checkForLocation)
                                            userInfo:nil
-                                            repeats:NO] retain];
+                                            repeats:NO];
 
 }
 
@@ -239,7 +239,6 @@
         picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonAddressProperty]];
      
         [self presentModalViewController:picker animated:YES];
-        [picker release];
         iFreeThePostcodeAppDelegate *appDelegate = (iFreeThePostcodeAppDelegate*)[[UIApplication sharedApplication] delegate];
         [appDelegate.rootViewController infoButtonHidden:YES];
     } else if( sender == submitBtn && currentLocation ) {
@@ -277,7 +276,7 @@
          * Create a PostCodeSubmitOperation with the generated URL
          * and add it to our queue.
          */
-        PostCodeSubmitOperation *plo = [[[PostCodeSubmitOperation alloc] initWithURL:url] autorelease];
+        PostCodeSubmitOperation *plo = [[PostCodeSubmitOperation alloc] initWithURL:url];
         [queue addOperation:plo];
     }
 }
@@ -308,9 +307,8 @@
     if( identifier != -1 ) {
         ABPropertyType type = ABPersonGetTypeOfProperty(property);
         if( type == 261 ) {
-            ABMultiValueRef ref = (NSString*)ABRecordCopyValue(person, property);
+            ABMultiValueRef ref = (__bridge ABMultiValueRef)((NSString*)CFBridgingRelease(ABRecordCopyValue(person, property)));
             CFDictionaryRef address = ABMultiValueCopyValueAtIndex(ref, identifier);
-            [((NSString*)ref) release];
             
             if( CFDictionaryContainsKey(address, @"ZIP") ) {
                 NSString *postcode = (NSString*)CFDictionaryGetValue(address, @"ZIP");
@@ -332,7 +330,6 @@
                     [appDelegate.rootViewController infoButtonHidden:NO];
                 }
             }
-            [((NSDictionary*)address) release];
         }
     }
 }
@@ -359,31 +356,28 @@
  */
 - (void)submissionResponse:(NSString*)page {
     if( page && [page rangeOfString:@"You should have an email on its way to confirm"].location != NSNotFound) {
-        [[[[UIAlertView alloc] 
+        [[[UIAlertView alloc] 
           initWithTitle:@"Success!" 
           message:@"You should get an email to confirm shortly." 
           delegate:self
           cancelButtonTitle:@"Close" 
-          otherButtonTitles:nil] 
-          autorelease]
+          otherButtonTitles:nil]
          show];
     } else if( page ) {
-        [[[[UIAlertView alloc] 
+        [[[UIAlertView alloc] 
           initWithTitle:@"Submission Failed" 
           message:@"We did not get a success message back from freethepostcode.org\nPlease make sure you have entered valid input." 
           delegate:self
           cancelButtonTitle:@"Close" 
-          otherButtonTitles:nil] 
-          autorelease]
+          otherButtonTitles:nil]
          show];
     } else {
-        [[[[UIAlertView alloc] 
+        [[[UIAlertView alloc] 
           initWithTitle:@"Submission Failed" 
           message:@"There was a problem accessing freethepostcode.org" 
           delegate:self
           cancelButtonTitle:@"Close" 
-          otherButtonTitles:nil] 
-          autorelease]
+          otherButtonTitles:nil]
          show];
     }
     
@@ -474,9 +468,7 @@
     /**
      * Keep a reference to this location.
      */
-    [currentLocation release];
     currentLocation = newLocation;
-    [currentLocation retain];
     
     /**
      * Update the status of the submit button.
@@ -491,16 +483,15 @@
 - (void)checkForLocation
 {
     if( ! currentLocation ) {
-        [[[[UIAlertView alloc]
+        [[[UIAlertView alloc]
            initWithTitle:@"Location problem"
            message:@"It is taking a long time to detect your location. Please make sure you have an internet connection and location services are turned on." 
            delegate:self
            cancelButtonTitle:@"Close" 
-           otherButtonTitles:nil] 
-          autorelease]
+           otherButtonTitles:nil]
           show];
     }
-    [timer release], timer = nil;
+    timer = nil;
 }
 
 /**
@@ -528,7 +519,7 @@
     if( ! currentLocation ) {
         [lastUpdated setText:@"Last updated: Loading..."];
     } else {
-        NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
         [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
         [lastUpdated setText:[NSString stringWithFormat:@"Last updated: %@", [dateFormatter stringFromDate:[currentLocation timestamp]]]];
@@ -603,9 +594,8 @@
  * De-allocating, so we release the current location and the queue.
  */
 - (void)dealloc {
-    [currentLocation release];
-    [queue release];
-	[super dealloc];
+    currentLocation = nil;
+    queue = nil;
 }
 
 

@@ -54,8 +54,6 @@
     
     // Call our delegate function
     [self locationManager:locationManager didUpdateToLocation:loc fromLocation:loc];
-    [now release];
-    [loc release];
 }
 
 /**
@@ -68,9 +66,7 @@
     fromLocation:(CLLocation *)oldLocation
 {
     MainViewController *controller = [[self rootViewController] mainViewController];
-    [currentLocation release];
     currentLocation = newLocation;
-    [currentLocation retain];
     NSLog( @"New location %@", newLocation );
     [controller locationUpdated:newLocation];
 }
@@ -99,7 +95,6 @@
         NSString *firstHalf = [postcode mutableCopy];
         NSString *secondHalf = [postcode mutableCopy];
         scanner = [NSScanner scannerWithString:postcode];
-        [postcode release];
         [scanner scanUpToString:@" " intoString:&firstHalf];
         [scanner scanUpToString:@"" intoString:&secondHalf];
         
@@ -140,12 +135,5 @@
 /**
  * De-allocate the resources we've used.
  */
-- (void)dealloc {
-	[rootViewController release];
-    [currentLocation release];
-    [locationManager release];
-	[window release];
-	[super dealloc];
-}
 
 @end

@@ -25,14 +25,12 @@
     self = [super init];
     if (self) {
         submitURL = url;
-        [submitURL retain];
     }
     return self;
 }
  
 - (void)dealloc {
-    [submitURL release], submitURL = nil;
-    [super dealloc];
+    submitURL = nil;
 }
 
 /**
@@ -42,7 +40,7 @@
     /**
      * Retrieve the contents of the URL.
      */
-    NSString *webpageString = [[[NSString alloc] initWithContentsOfURL:submitURL encoding:NSUTF8StringEncoding error:nil] autorelease];
+    NSString *webpageString = [[NSString alloc] initWithContentsOfURL:submitURL encoding:NSUTF8StringEncoding error:nil];
  
     /**
      * Retrieve a reference to the app and pass the content in.

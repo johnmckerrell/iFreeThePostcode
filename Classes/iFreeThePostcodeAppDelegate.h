@@ -18,8 +18,8 @@
     CLLocation *currentLocation;
 }
 
-@property (nonatomic, retain) UIWindow *window;
-@property (nonatomic, retain) RootViewController *rootViewController;
+@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) RootViewController *rootViewController;
 
 // Delegate method from the CLLocationManagerDelegate protocol.
 - (void)locationManager:(CLLocationManager *)manager

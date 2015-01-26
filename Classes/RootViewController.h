@@ -19,10 +19,10 @@
 	UINavigationBar *flipsideNavigationBar;
 }
 
-@property (nonatomic, retain) UIButton *infoButton;
-@property (nonatomic, retain) MainViewController *mainViewController;
-@property (nonatomic, retain) UINavigationBar *flipsideNavigationBar;
-@property (nonatomic, retain) FlipsideViewController *flipsideViewController;
+@property (nonatomic, strong) UIButton *infoButton;
+@property (nonatomic, strong) MainViewController *mainViewController;
+@property (nonatomic, strong) UINavigationBar *flipsideNavigationBar;
+@property (nonatomic, strong) FlipsideViewController *flipsideViewController;
 
 - (IBAction)toggleView;
 - (void)infoButtonHidden:(BOOL)hidden;
