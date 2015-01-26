@@ -1,0 +1,8 @@
+.svn
+*.mode1v3
+*.pbxuser
+build
+project.xcworkspace
+xcuserdata
+Screenshots
+.DS_Store
