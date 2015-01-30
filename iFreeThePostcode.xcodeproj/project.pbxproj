@@ -11,16 +11,14 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754A0DD40C5E005A515E /* FlipsideView.xib */; };
-		280E754E0DD40C5E005A515E /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754B0DD40C5E005A515E /* MainView.xib */; };
-		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
-		289233A60DB2D0840083E9F9 /* FlipsideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A30DB2D0840083E9F9 /* FlipsideView.m */; };
-		289233A70DB2D0840083E9F9 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A50DB2D0840083E9F9 /* MainView.m */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
-		289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AB0DB2D0DB0083E9F9 /* RootViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		522E47351A78BEB3003F7785 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522E47341A78BEB3003F7785 /* Images.xcassets */; };
+		522E47391A78C7C2003F7785 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522E47381A78C7C2003F7785 /* Main.storyboard */; };
 		522EFBCA0EB65A9B00959E2C /* PostCodeSubmitOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 522EFBC90EB65A9B00959E2C /* PostCodeSubmitOperation.m */; };
 		524772430EB0A6CE00858FEC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524772420EB0A6CE00858FEC /* CoreLocation.framework */; };
+		529E72341A7B9245002F0B06 /* DismissSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 529E72331A7B9245002F0B06 /* DismissSegue.m */; };
+		529E723A1A7B997F002F0B06 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529E72391A7B997F002F0B06 /* Launch Screen.xib */; };
 		52BA0FDC0EB30BDA004D1E84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA0FDB0EB30BDA004D1E84 /* CFNetwork.framework */; };
 		52CB38230EC76C0700D239F3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CB38220EC76C0700D239F3 /* Icon.png */; };
 		52D88D560FB66A9B00E2CB86 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D88D550FB66A9B00E2CB86 /* AddressBook.framework */; };
@@ -34,24 +32,20 @@
 		1D3623250D0F684500981E51 /* iFreeThePostcodeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iFreeThePostcodeAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* iFreeThePostcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFreeThePostcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		280E754A0DD40C5E005A515E /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipsideView.xib; sourceTree = "<group>"; };
-		280E754B0DD40C5E005A515E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
-		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		289233A20DB2D0840083E9F9 /* FlipsideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipsideView.h; path = Classes/FlipsideView.h; sourceTree = "<group>"; };
-		289233A30DB2D0840083E9F9 /* FlipsideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideView.m; path = Classes/FlipsideView.m; sourceTree = "<group>"; };
-		289233A40DB2D0840083E9F9 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainView.h; path = Classes/MainView.h; sourceTree = "<group>"; };
-		289233A50DB2D0840083E9F9 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainView.m; path = Classes/MainView.m; sourceTree = "<group>"; };
 		289233A80DB2D0DB0083E9F9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
 		289233A90DB2D0DB0083E9F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
-		289233AA0DB2D0DB0083E9F9 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		289233AB0DB2D0DB0083E9F9 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		289233AC0DB2D0DB0083E9F9 /* FlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipsideViewController.h; path = Classes/FlipsideViewController.h; sourceTree = "<group>"; };
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* iFreeThePostcode_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iFreeThePostcode_Prefix.pch; sourceTree = "<group>"; };
+		522E47341A78BEB3003F7785 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = iFreeThePostcode/Images.xcassets; sourceTree = "<group>"; };
+		522E47381A78C7C2003F7785 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		522EFBC80EB65A9B00959E2C /* PostCodeSubmitOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCodeSubmitOperation.h; sourceTree = "<group>"; };
 		522EFBC90EB65A9B00959E2C /* PostCodeSubmitOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCodeSubmitOperation.m; sourceTree = "<group>"; };
 		524772420EB0A6CE00858FEC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		529E72321A7B9245002F0B06 /* DismissSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DismissSegue.h; sourceTree = "<group>"; };
+		529E72331A7B9245002F0B06 /* DismissSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DismissSegue.m; sourceTree = "<group>"; };
+		529E72391A7B997F002F0B06 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		52BA0FDB0EB30BDA004D1E84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		52CB38220EC76C0700D239F3 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		52D88D550FB66A9B00E2CB86 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -80,8 +74,6 @@
 		080E96DDFE201D6D7F000001 /* Application Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				289233AA0DB2D0DB0083E9F9 /* RootViewController.h */,
-				289233AB0DB2D0DB0083E9F9 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* iFreeThePostcodeAppDelegate.h */,
 				1D3623250D0F684500981E51 /* iFreeThePostcodeAppDelegate.m */,
 			);
@@ -100,8 +92,6 @@
 		281C6CD70DB2D82200F60ACC /* Flipside View */ = {
 			isa = PBXGroup;
 			children = (
-				289233A20DB2D0840083E9F9 /* FlipsideView.h */,
-				289233A30DB2D0840083E9F9 /* FlipsideView.m */,
 				289233AC0DB2D0DB0083E9F9 /* FlipsideViewController.h */,
 				289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */,
 			);
@@ -111,8 +101,6 @@
 		289233A00DB2D0730083E9F9 /* Main View */ = {
 			isa = PBXGroup;
 			children = (
-				289233A40DB2D0840083E9F9 /* MainView.h */,
-				289233A50DB2D0840083E9F9 /* MainView.m */,
 				289233A80DB2D0DB0083E9F9 /* MainViewController.h */,
 				289233A90DB2D0DB0083E9F9 /* MainViewController.m */,
 			);
@@ -142,6 +130,8 @@
 				522EFBC80EB65A9B00959E2C /* PostCodeSubmitOperation.h */,
 				522EFBC90EB65A9B00959E2C /* PostCodeSubmitOperation.m */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				529E72321A7B9245002F0B06 /* DismissSegue.h */,
+				529E72331A7B9245002F0B06 /* DismissSegue.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -149,12 +139,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				522E47341A78BEB3003F7785 /* Images.xcassets */,
 				52CB38220EC76C0700D239F3 /* Icon.png */,
-				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
-				280E754B0DD40C5E005A515E /* MainView.xib */,
-				280E754C0DD40C5E005A515E /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				52EC7D210FC07E87003E8534 /* Default.png */,
+				529E72391A7B997F002F0B06 /* Launch Screen.xib */,
+				522E47381A78C7C2003F7785 /* Main.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -223,11 +213,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */,
-				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
-				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
+				522E47391A78C7C2003F7785 /* Main.storyboard in Resources */,
+				522E47351A78BEB3003F7785 /* Images.xcassets in Resources */,
 				52CB38230EC76C0700D239F3 /* Icon.png in Resources */,
 				52EC7D220FC07E87003E8534 /* Default.png in Resources */,
+				529E723A1A7B997F002F0B06 /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,11 +230,9 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* iFreeThePostcodeAppDelegate.m in Sources */,
-				289233A60DB2D0840083E9F9 /* FlipsideView.m in Sources */,
-				289233A70DB2D0840083E9F9 /* MainView.m in Sources */,
 				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
-				289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
+				529E72341A7B9245002F0B06 /* DismissSegue.m in Sources */,
 				522EFBCA0EB65A9B00959E2C /* PostCodeSubmitOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +244,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -264,7 +253,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iFreeThePostcode_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = iFreeThePostcode;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -276,13 +265,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iFreeThePostcode_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = iFreeThePostcode;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -307,13 +297,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iFreeThePostcode_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = iFreeThePostcode;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;

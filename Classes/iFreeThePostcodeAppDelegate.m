@@ -7,7 +7,6 @@
 //
 
 #import "iFreeThePostcodeAppDelegate.h"
-#import "RootViewController.h"
 #import "MainViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
@@ -15,7 +14,6 @@
 
 
 @synthesize window;
-@synthesize rootViewController;
 
 /**
  * Simple function to pass test locations as the iPhone simulator
@@ -53,7 +51,7 @@
     toggle = ( toggle + 1 ) % 3;
     
     // Call our delegate function
-    [self locationManager:locationManager didUpdateToLocation:loc fromLocation:loc];
+    [self locationManager:locationManager didUpdateLocations:@[loc]];
 }
 
 /**
@@ -61,14 +59,12 @@
  * It should pass a reference to the manager and a reference
  * to the previous and current locations.
  */
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-    fromLocation:(CLLocation *)oldLocation
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    MainViewController *controller = [[self rootViewController] mainViewController];
-    currentLocation = newLocation;
-    NSLog( @"New location %@", newLocation );
-    [controller locationUpdated:newLocation];
+    MainViewController *controller = (MainViewController *)self.window.rootViewController;
+    currentLocation = locations[0];
+    NSLog( @"New location %@", currentLocation );
+    [controller locationUpdated:currentLocation];
 }
 
 /**
@@ -98,7 +94,7 @@
         [scanner scanUpToString:@" " intoString:&firstHalf];
         [scanner scanUpToString:@"" intoString:&secondHalf];
         
-        MainViewController *controller = [[self rootViewController] mainViewController];
+        MainViewController *controller = (MainViewController *)self.window.rootViewController;
         [controller setPostcodeFirstPart:firstHalf secondPart:secondHalf];
         return YES;
     }
@@ -112,14 +108,19 @@
  */
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
-    window.rootViewController = rootViewController;
-	[window makeKeyAndVisible];
+
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     locationManager = [[CLLocationManager alloc] init];
     [locationManager requestWhenInUseAuthorization];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     [locationManager startUpdatingLocation];
+    
+    return YES;
 }
 
 /**
@@ -128,7 +129,7 @@
  * re-enable the submit button.
  */
 - (void)submissionFinished:(NSString *) response {
-    MainViewController *controller = [[self rootViewController] mainViewController];
+    MainViewController *controller = (MainViewController *)self.window.rootViewController;
     [controller submissionResponse: response];
 }
 

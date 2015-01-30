@@ -11,17 +11,13 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import "PostCodeSubmitOperation.h"
-#import "RootViewController.h"
 
 @interface MainViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate,UIAlertViewDelegate> {
     IBOutlet UILabel *latitude, *longitude, *accuracy, *lastUpdated, *lockStatusDescription;
     IBOutlet UITextField *pcFirst, *pcSecond, *emailAddress, *activeField;
-    IBOutlet UITextView *accuracyMessage;
-    IBOutlet UIButton *submitBtn, *testBtn, *linkBtn, *addressBookBtn;
+    IBOutlet UILabel *accuracyMessage;
+    IBOutlet UIButton *submitBtn, *addressBookBtn, *infoBtn;
     IBOutlet UIActivityIndicatorView *activity;
-    IBOutlet UIScrollView *scrollView;
-    IBOutlet UIView *innerView;
-    IBOutlet UISwitch *locationLock;
     IBOutlet UISegmentedControl *lockStatus;
     CLLocation *currentLocation;
     BOOL updating, keyboardShown;

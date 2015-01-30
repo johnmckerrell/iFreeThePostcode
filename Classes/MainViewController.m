@@ -7,35 +7,9 @@
 //
 
 #import "MainViewController.h"
-#import "MainView.h"
 #import "iFreeThePostcodeAppDelegate.h"
 
 @implementation MainViewController
-
-/**
- * Called when the Nib is initialised. We initialise
- * some variables here.
- */
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		// Custom initialization
-        /**
-         * Are we submitting an update? NO
-         */
-        updating = NO;
-        /**
-         * Set our currentLocation to nil initially.
-         */
-        currentLocation = nil;
-        /**
-         * Set up the operations queue, we will use
-         * this to submit the postcode in another thread.
-         */
-        queue = [[NSOperationQueue alloc] init];
-	}
-    
-	return self;
-}
 
 /**
  * This is called when the view is loaded, now
@@ -43,6 +17,21 @@
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /**
+     * Are we submitting an update? NO
+     */
+    updating = NO;
+    /**
+     * Set our currentLocation to nil initially.
+     */
+    currentLocation = nil;
+    /**
+     * Set up the operations queue, we will use
+     * this to submit the postcode in another thread.
+     */
+    queue = [[NSOperationQueue alloc] init];
+    
     /**
      * Retrieve any user defaults that have been saved.
      */
@@ -64,19 +53,14 @@
      */
     [self updateViewStatus];
     
-    CGRect frame = addressBookBtn.frame;
-    frame.origin.x -= 15;
-    frame.origin.y -= 15;
-    frame.size.width += 30;
-    frame.size.height += 30;
-    addressBookBtn.frame = frame;
+//    CGRect frame = addressBookBtn.frame;
+//    frame.origin.x -= 15;
+//    frame.origin.y -= 15;
+//    frame.size.width += 30;
+//    frame.size.height += 30;
+//    addressBookBtn.frame = frame;
     //[addressBookBtn setFrame:CGRectMake(262, 409, 58, 59)];
-    
-    /**
-     * Uncomment this if you're developing in the simulator.
-     */
-    //[testBtn setHidden:NO];
-    
+        
 
     timer = [NSTimer scheduledTimerWithTimeInterval:20
                                              target:self
@@ -221,15 +205,7 @@
  */
 - (IBAction)buttonClicked:(id)sender {
     NSLog( @"Button clicked: %@", sender );
-    if( sender == testBtn ) {
-        /**
-         * Generate a test location.
-         */
-        //id appDelegate = [[UIApplication sharedApplication] delegate];
-        //[appDelegate testUpdateLocation];
-        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"ifreethepostcode:L19+4UD"]];
-        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"ifreethepostcode:W1A%200AA"]];
-    } else if( sender == addressBookBtn ) {
+    if( sender == addressBookBtn ) {
         // Create an addressbook picker and present it,
         // this object will be the delegate.
         ABPeoplePickerNavigationController *picker =
@@ -238,9 +214,7 @@
         
         picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonAddressProperty]];
      
-        [self presentModalViewController:picker animated:YES];
-        iFreeThePostcodeAppDelegate *appDelegate = (iFreeThePostcodeAppDelegate*)[[UIApplication sharedApplication] delegate];
-        [appDelegate.rootViewController infoButtonHidden:YES];
+        [self presentViewController:picker animated:YES completion:nil];
     } else if( sender == submitBtn && currentLocation ) {
         /**
          * Submit the postcode.
@@ -287,9 +261,9 @@
  */
 - (void)peoplePickerNavigationControllerDidCancel:
             (ABPeoplePickerNavigationController *)peoplePicker {
-    [self dismissModalViewControllerAnimated:YES];
-    iFreeThePostcodeAppDelegate *appDelegate = (iFreeThePostcodeAppDelegate*)[[UIApplication sharedApplication] delegate];
-    [appDelegate.rootViewController infoButtonHidden:NO];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
  
  
@@ -325,9 +299,8 @@
                 NSLog(@"firstHalf=%@ secondHalf=%@", firstHalf, secondHalf);
                 if( ! ( [firstHalf isEqualToString:@""] || [secondHalf isEqualToString:@""] ) ) {
                     [self setPostcodeFirstPart:firstHalf secondPart:secondHalf];
-                    [self dismissModalViewControllerAnimated:YES];
-                    iFreeThePostcodeAppDelegate *appDelegate = (iFreeThePostcodeAppDelegate*)[[UIApplication sharedApplication] delegate];
-                    [appDelegate.rootViewController infoButtonHidden:NO];
+                    [self dismissViewControllerAnimated:YES completion:^{
+                    }];
                 }
             }
         }
@@ -427,12 +400,7 @@
     /**
      * If the user has locked the current location, ignore any updates.
      */
-    /**
-     * Using segmented control to allow levels of locking now.
-     *
-    if( locationLock.on )
-        return;
-     */
+
     CLLocationAccuracy acc = [newLocation horizontalAccuracy];
     
     /**
@@ -535,10 +503,7 @@
         [submitBtn setEnabled:NO];
         [submitBtn setHidden:NO];
         [accuracyMessage setHidden:YES];
-    } else if( emailAddress.text && pcFirst.text && pcSecond.text
-     && ! [[emailAddress text] isEqualToString:@""]
-     && ! [[pcFirst text] isEqualToString:@""]
-     && ! [[pcSecond text] isEqualToString:@""]
+    } else if( [emailAddress.text length] && [pcFirst.text length] && [pcSecond.text length]
      && acc < 50 ) {
         NSLog(@"Enabled");
         [submitBtn setEnabled:YES];
