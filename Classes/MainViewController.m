@@ -539,13 +539,6 @@
 
 }
 
-/**
- * This app will only work in portrait mode.
- */
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 /**
  * Not really much we can do if we receive a memory warning.
