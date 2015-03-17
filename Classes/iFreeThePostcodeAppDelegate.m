@@ -101,16 +101,6 @@
     return NO;
 }
 
-/**
- * Function that calls when the app has finished loading.
- * We setup the location manager and tell it to start
- * updating us with the current location.
- */
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-	
-
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     locationManager = [[CLLocationManager alloc] init];
