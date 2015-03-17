@@ -6,3 +6,5 @@ project.xcworkspace
 xcuserdata
 Screenshots
 .DS_Store
+Pods
+iFreeThePostcode.xccheckout

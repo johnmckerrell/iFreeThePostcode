@@ -1,0 +1,10 @@
+PODS:
+  - BorderButton (0.1.2)
+
+DEPENDENCIES:
+  - BorderButton
+
+SPEC CHECKSUMS:
+  BorderButton: 6a19a58db01c43a735349f029262e9f55e4973c5
+
+COCOAPODS: 0.34.4
